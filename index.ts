@@ -5,6 +5,7 @@ import path from 'path'
 import 'dotenv/config'
 
 import apiUserRoutes from './routes/user'
+import apiBankingRoutes from './routes/banking'
 
 const app: express.Express = express()
 const port: number = 8100
@@ -18,9 +19,11 @@ if (!fs.existsSync(targetDir)) {
 	fs.mkdirSync(targetDir)
 	fs.writeFileSync(path.join(targetDir, 'account.json'), JSON.stringify([]), 'utf8')
 	fs.writeFileSync(path.join(targetDir, 'transaction.json'), JSON.stringify([]), 'utf8')
+	fs.writeFileSync(path.join(targetDir, 'transactionLog.json'), JSON.stringify([]), 'utf8')
 }
 
 app.use('/api/user', [], apiUserRoutes)
+app.use('/api/banking', [], apiBankingRoutes)
 
 const httpserver = new http.Server(app)
 
