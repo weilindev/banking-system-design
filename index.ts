@@ -19,7 +19,6 @@ if (!fs.existsSync(targetDir)) {
 	fs.mkdirSync(targetDir)
 	fs.writeFileSync(path.join(targetDir, 'account.json'), JSON.stringify([]), 'utf8')
 	fs.writeFileSync(path.join(targetDir, 'transaction.json'), JSON.stringify([]), 'utf8')
-	fs.writeFileSync(path.join(targetDir, 'transactionLog.json'), JSON.stringify([]), 'utf8')
 }
 
 app.use('/api/user', [], apiUserRoutes)

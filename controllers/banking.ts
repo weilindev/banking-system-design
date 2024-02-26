@@ -1,6 +1,8 @@
 import express from 'express'
 
 import UserService from '../service/user'
+import LogService from '../service/log'
+import { randomUUID } from 'crypto'
 
 const BankingController = {
 	async checkBalance(
@@ -103,6 +105,17 @@ const BankingController = {
 		// update record
 		const fromContent = UserService.update(updatedFromPayload)
 		const toContent = UserService.update(updatedToPayload)
+
+		// create transfer log
+		LogService.transfer({
+			tid: randomUUID(),
+			type: 'transfer',
+			amount: transferAmount,
+			operator: fromAccountId,
+			receiver: toAccountId,
+			success: true,
+			createdAt: new Date(),
+		})
 
 		return res.status(200).send({ success: true, data: { content: [fromContent, toContent] } })
 	}
