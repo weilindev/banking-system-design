@@ -1,5 +1,6 @@
 node_modules
 .env
 localstorage
+yarn.lock
 #build stuff
 dist
