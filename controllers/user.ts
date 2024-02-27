@@ -13,13 +13,6 @@ export interface IAccount {
 }
 
 const UserController = {
-	// TODO: login & authentication
-	async login(
-		req: express.Request,
-		res: express.Response
-	): Promise<void> {
-		res.send('login')
-	},
 	async register(
 		req: express.Request,
 		res: express.Response

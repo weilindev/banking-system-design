@@ -12,4 +12,4 @@ docker build -t <image_name> .
 # run the image on background
 docker run -p <port>:8100 --name <container_name> -d <image_name>
 ```
-You can see the server running on http://localhost:\<port>
+You can see the server running on http://localhost:port
